@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-reservations-dashboard',
-  imports: [],
+  imports: [SidebarComponent],
   templateUrl: './reservations-dashboard.component.html',
   styleUrl: './reservations-dashboard.component.scss'
 })

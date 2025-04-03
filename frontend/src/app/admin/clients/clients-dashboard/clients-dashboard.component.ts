@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-clients-dashboard',
-  imports: [],
+  standalone: true,
+  imports: [SidebarComponent],
   templateUrl: './clients-dashboard.component.html',
-  styleUrl: './clients-dashboard.component.scss'
+  styleUrls: ['./clients-dashboard.component.scss']
 })
 export class ClientsDashboardComponent {
-
 }

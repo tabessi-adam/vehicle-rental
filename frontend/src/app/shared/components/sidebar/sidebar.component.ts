@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  imports:[CommonModule],
+  imports:[CommonModule,RouterLink],
   standalone: true
 })
 export class SidebarComponent implements OnInit {
@@ -16,8 +16,8 @@ export class SidebarComponent implements OnInit {
   mainMenuItems: any[] = [];
   
   bottomMenuItems = [
-    { icon: 'fa-cog', label: 'Settings', route: '/settings' },
-    { icon: 'fa-sign-out-alt', label: 'Logout', route: null }
+    { icon: 'fa-cog', label: 'Settings', route: '' }, 
+    { icon: 'fa-sign-out-alt', label: 'Logout', route: null, action: () => this.logout() }
   ];
 
   constructor(
@@ -47,6 +47,7 @@ export class SidebarComponent implements OnInit {
           { icon: 'fa-users', label: 'Clients', route: '/admin/clients' },
           { icon: 'fa-star', label: 'Reviews', route: '/admin/reviews' }
         ];
+        this.bottomMenuItems[0].route = '/admin/settings';
         break;
       
       case 'AGENT':
@@ -56,16 +57,10 @@ export class SidebarComponent implements OnInit {
           { icon: 'fa-calendar-alt', label: 'Reservations', route: '/agent/reservations/reservations-dashboard' },
           { icon: 'fa-star', label: 'Reviews', route: '/agent/reviews' }
         ];
+        this.bottomMenuItems[0].route = '/agent/settings';
         break;
       
-      case 'CLIENT':
-        this.mainMenuItems = [
-          { icon: 'fa-home', label: 'Home', route: '/home' },
-          { icon: 'fa-car', label: 'Browse Cars', route: '/vehicles' },
-          { icon: 'fa-calendar-alt', label: 'My Reservations', route: '/my-reservations' },
-          { icon: 'fa-user', label: 'Profile', route: '/profile' }
-        ];
-        break;
+   
       
       default:
         this.mainMenuItems = [];
@@ -78,11 +73,15 @@ export class SidebarComponent implements OnInit {
   }
 
   handleMenuClick(item: any): void {
-    if (item.route === null && item.label === 'Logout') {
-      this.authService.logout();
-      this.router.navigate(['/']);
+    if (item.action) {
+      item.action();
     } else if (item.route) {
       this.router.navigate([item.route]);
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 }

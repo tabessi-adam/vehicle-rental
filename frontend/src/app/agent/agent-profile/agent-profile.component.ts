@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-agent-profile',
-  imports: [],
+  standalone: true,
+  imports: [SidebarComponent],
   templateUrl: './agent-profile.component.html',
-  styleUrl: './agent-profile.component.scss'
+  styleUrls: ['./agent-profile.component.scss']
 })
 export class AgentProfileComponent {
-
 }

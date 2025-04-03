@@ -30,6 +30,9 @@ export const routes: Routes = [
       { path: 'agents', loadComponent: () => 
         import('./admin/agents/agents-dashboard/agents-dashboard.component').then(m => m.AgentsDashboardComponent) 
       },
+      { path: 'settings', loadComponent: () => 
+        import('./admin/admin-profile/admin-profile.component').then(m => m.AdminProfileComponent) 
+      },
       { path: 'clients', loadComponent: () => 
         import('./admin/clients/clients-dashboard/clients-dashboard.component').then(m => m.ClientsDashboardComponent)       },
       { path: 'reviews', loadComponent: () => 
@@ -46,6 +49,9 @@ export const routes: Routes = [
       },
       { path: 'reservations/reservations-dashboard', loadComponent: () => 
         import('./agent/reservations/reservations-dashboard/reservations-dashboard.component').then(m => m.ReservationsDashboardComponent) 
+      },
+      { path: 'settings', loadComponent: () => 
+        import('./agent/agent-profile/agent-profile.component').then(m => m.AgentProfileComponent) 
       },
       { path: 'reviews', loadComponent: () => 
         import('./agent/reviews/reviews-dashboard/reviews-dashboard.component').then(m => m.ReviewsDashboardComponent) 

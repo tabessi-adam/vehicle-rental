@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-admin-profile',
-  imports: [],
+  standalone: true,
+  imports: [SidebarComponent],
   templateUrl: './admin-profile.component.html',
-  styleUrl: './admin-profile.component.scss'
+  styleUrls: ['./admin-profile.component.scss']
 })
 export class AdminProfileComponent {
 

@@ -62,7 +62,7 @@ export class AuthService {
 
   getUserRole(): string | null {
     const role = this.isBrowser ? localStorage.getItem('userRole') : null;
-    console.log('Getting user role:', role);
+   
     return role;
   }
 
