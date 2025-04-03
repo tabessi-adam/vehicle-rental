@@ -1,0 +1,143 @@
+// register.component.scss
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .register-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  
+    h2 {
+      margin: 0 0 0.5rem;
+      color: #333;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+  
+    .subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .register-form {
+    .form-group {
+      margin-bottom: 1.5rem;
+  
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: 500;
+      }
+  
+      .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+  
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+  
+        &.is-invalid {
+          border-color: #dc3545;
+        }
+      }
+  
+      .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+  
+  .error-alert {
+    background-color: #fff3f3;
+    color: #dc3545;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .register-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  
+    &:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  
+  .loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+  
+  .additional-links {
+    margin-top: 1.5rem;
+    text-align: center;
+  
+    a {
+      display: block;
+      color: #007bff;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: 0.875rem;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 480px) {
+    .register-card {
+      padding: 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  }

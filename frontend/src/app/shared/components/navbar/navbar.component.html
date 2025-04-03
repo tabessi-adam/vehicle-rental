@@ -1,0 +1,63 @@
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <!-- Logo and Name -->
+  <div class="navbar__brand" (click)="navigateToHome()" tabindex="0" (keydown)="handleKeydown($event, 'home')">
+    <img src="assets/images/logos/logo.png" alt="RentyCar Logo" class="navbar__logo">
+    <span class="navbar__name">RentyCar</span>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <ul class="navbar__links">
+    <li><a routerLinkActive="active" (click)="navigateTo('home')" (keydown)="handleKeydown($event, 'home')">Home</a></li>
+    <li><a routerLinkActive="active" (click)="navigateTo('contact')" (keydown)="handleKeydown($event, 'contact')">Contact</a></li>
+    <li><a routerLinkActive="active" (click)="navigateTo('collection')" (keydown)="handleKeydown($event, 'collection')">Our Collection</a></li>
+    <li><a routerLinkActive="active" (click)="navigateTo('about')" (keydown)="handleKeydown($event, 'about')">About Us</a></li>
+  </ul>
+
+  <!-- Desktop Auth Section -->
+  <div class="navbar__auth">
+    <ng-container *ngIf="!authService.isLoggedIn(); else loggedInTemplate">
+      <button (click)="navigateTo('login')" class="btn btn--secondary btn--pill">Login</button>
+      <button (click)="navigateTo('register')" class="btn btn--primary btn--pill">Register</button>
+    </ng-container>
+
+    <ng-template #loggedInTemplate>
+      <div class="navbar__profile" tabindex="0" (click)="toggleProfileDropdown()" 
+           (keydown)="handleProfileKeydown($event)" aria-expanded="isProfileDropdownOpen" 
+           aria-label="Profile menu">
+        My Profile
+        <div class="navbar__dropdown" [class.active]="isProfileDropdownOpen" role="menu">
+          <a role="menuitem" (click)="navigateTo('profile')">My Profile</a>
+          <a role="menuitem" (click)="navigateTo('settings')">My Settings</a>
+          <a role="menuitem" (click)="logout()">Logout</a>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Mobile Hamburger -->
+  <button class="navbar__hamburger" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()"
+          aria-label="Toggle mobile menu" aria-expanded="isMobileMenuOpen" aria-controls="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile-menu" [class.active]="isMobileMenuOpen" id="mobile-menu" role="menu">
+    <a role="menuitem" (click)="navigateTo('home')">Home</a>
+    <a role="menuitem" (click)="navigateTo('contact')">Contact</a>
+    <a role="menuitem" (click)="navigateTo('collection')">Our Collection</a>
+    <a role="menuitem" (click)="navigateTo('about')">About Us</a>
+    
+    <ng-container *ngIf="!authService.isLoggedIn(); else mobileLoggedIn">
+      <a role="menuitem" (click)="navigateTo('login')">Login</a>
+      <a role="menuitem" (click)="navigateTo('register')">Register</a>
+    </ng-container>
+    
+    <ng-template #mobileLoggedIn>
+      <a role="menuitem" (click)="navigateTo('profile')">My Profile</a>
+      <a role="menuitem" (click)="navigateTo('settings')">My Settings</a>
+      <a role="menuitem" (click)="logout()">Logout</a>
+    </ng-template>
+  </div>
+</nav>
