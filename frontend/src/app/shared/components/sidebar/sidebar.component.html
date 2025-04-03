@@ -1,18 +1,18 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
   <div class="logo-section" (click)="toggleSidebar()">
-    <img src="assets/images/logo.png" alt="Logo" class="logo-img">
-    <span class="logo-text" *ngIf="!isCollapsed">Company Name</span>
+    <img src="assets/images/logos/logo.png" alt="Logo" class="logo-img">
+    <span class="logo-text" *ngIf="!isCollapsed">RentyCar</span>
   </div>
 
   <div class="menu-section main-menu">
-    <div class="menu-item" *ngFor="let item of mainMenuItems" [routerLink]="item.route" routerLinkActive="active">
+    <div class="menu-item" *ngFor="let item of mainMenuItems" (click)="handleMenuClick(item)" [class.active]="router.url === item.route">
       <i class="fas {{ item.icon }}"></i>
       <span class="menu-label" *ngIf="!isCollapsed">{{ item.label }}</span>
     </div>
   </div>
 
   <div class="menu-section bottom-menu">
-    <div class="menu-item" *ngFor="let item of bottomMenuItems" [routerLink]="item.route" routerLinkActive="active">
+    <div class="menu-item" *ngFor="let item of bottomMenuItems" (click)="handleMenuClick(item)" [class.active]="router.url === item.route">
       <i class="fas {{ item.icon }}"></i>
       <span class="menu-label" *ngIf="!isCollapsed">{{ item.label }}</span>
     </div>

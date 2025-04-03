@@ -50,7 +50,11 @@ export class NavbarComponent {
   }
 
   navigateTo(path: string) {
-    this.router.navigate([`/${path}`]);
+    if (path === 'login' || path === 'register') {
+      this.router.navigate(['/auth', path]);
+    } else {
+      this.router.navigate([`/${path}`]);
+    }
     this.closeMenus();
   }
 
